@@ -1,0 +1,36 @@
+services:
+  app:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    ports:
+      - 8000:80
+    depends_on:
+      - mongodb
+    env_file:
+      - .env
+    volumes:
+      - .:/app
+  mongodb:
+    image: mongo:latest
+    env_file:
+      - .env
+    environment:
+      MONGO_INITDB_ROOT_USERNAME: ${MONGO_USER}
+      MONGO_INITDB_ROOT_PASSWORD: ${MONGO_PASSWORD}
+    ports:
+      - "27017:27017"
+    volumes:
+      - mongo-data:/data/db
+  react-app:
+    build:
+      context: ./react-app
+      dockerfile: Dockerfile.react
+    ports:
+      - 3000:3000
+    volumes:
+      - ./react-app/app:/app
+      
+
+volumes:
+  mongo-data:

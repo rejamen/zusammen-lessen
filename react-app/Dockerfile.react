@@ -1,0 +1,20 @@
+# Use the official Node.js base image
+FROM node:14-alpine
+
+# Set the working directory in the container
+WORKDIR /app
+
+# Install create-react-app globally
+RUN npm install -g create-react-app
+
+# Check if package.json exists, if not, create a new React app
+COPY ./app /app
+
+# Install dependencies (if they weren't installed by create-react-app)
+RUN npm install
+
+# Expose the port the app runs on
+EXPOSE 3000
+
+# Default command to start the React app
+CMD ["npm", "start"]

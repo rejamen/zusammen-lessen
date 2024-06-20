@@ -1,0 +1,8 @@
+fastapi
+uvicorn
+pydantic
+motor
+python-multipart
+python-jose
+boto3
+pydantic-mongo

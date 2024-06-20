@@ -4,3 +4,6 @@ This is a project I love. Maybe the one I love the most. I am working with my da
 ## Help
 You can contribute to this project and also Sponsor us. My goal is to make her interested on reading more than in social media :) 
 
+## Start React App
+docker compose run react-app npx create-react-app zusammen-lessen
+
